@@ -1,0 +1,24 @@
+<div class="container">
+  <h1>ReclaNation</h1>
+  <h3>Faça parte da nação reclamadora!</h3>
+  <ul class="user-list">
+    <li *ngFor="let usuario of usuarios">
+      <div class="user-info">
+        <span class="user-name">{{ usuario.nome }}</span>
+        <span class="user-id">ID: {{ usuario.id }}</span>
+      </div>
+      <ul class="reclamacao-list">
+        <h2>Reclamações</h2>
+        <li *ngFor="let reclamacao of usuario.reclamacoes">
+          <div class="reclamacao-info">
+            <span class="reclamacao-desc">{{ reclamacao.descricao }}</span>
+            <span class="reclamacao-id">ID: {{ reclamacao.id }}</span>
+            <button (click)="editReclamacao(reclamacao)">Edit</button>
+            <button (click)="deleteReclamacao(reclamacao.id)">Delete</button>
+          </div>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
