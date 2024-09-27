@@ -1,16 +1,16 @@
+import { ReclamacoesService } from './../../services/reclamacoes-api.service';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, RouterModule, RouterOutlet } from '@angular/router';
 import { Reclamacao } from '../../models/reclamacao';
-import { ReclamacoesService } from '../../services/reclamacoes-api.service';
 import { ReclamacoesListComponent } from '../reclamacoes-list/reclamacoes-list.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-reclamacoes-form',
   standalone: true,
-  imports: [ CommonModule, FormsModule, ReclamacoesListComponent, HttpClientModule ],
+  imports: [ CommonModule, FormsModule, ReclamacoesListComponent, HttpClientModule, RouterModule, RouterOutlet],
   templateUrl: './reclamacoes-form.component.html',
   styleUrl: './reclamacoes-form.component.scss'
 })
@@ -20,10 +20,21 @@ export class ReclamacoesFormComponent implements OnInit {
   isEditing = false;
 
   constructor(
-    private reclamacoesService: ReclamacoesService,
-    private router: Router,
-    private route: ActivatedRoute
-  ) {}
+    private reclamacoesService: ReclamacoesService, private router: Router, private route: ActivatedRoute) {
+    const id = this.route.snapshot.paramMap.get('id');
+
+    if (id) {
+      this.isEditing = true;
+      const relamacaoId = parseInt(id, 10);
+
+      this.reclamacoesService.getReclamacoes().subscribe(relamacoes => {
+        const encontrouReclamacao = relamacoes.find(p => p.id === relamacaoId);
+        if (encontrouReclamacao) {
+          this.reclamacao = encontrouReclamacao;
+        }
+      });
+    }
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {

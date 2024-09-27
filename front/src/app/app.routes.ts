@@ -4,7 +4,8 @@ import { ReclamacoesFormComponent } from './components/reclamacoes-form/reclamac
 
 export const routes: Routes = [
   { path: '', component: ReclamacoesListComponent },
-  { path: 'edit/:id', component: ReclamacoesFormComponent }
+  { path: 'edit/:id', component: ReclamacoesFormComponent },
+  { path: 'add', component: ReclamacoesFormComponent }
 ];
 
 export const appRouterProviders = [provideRouter(routes)];

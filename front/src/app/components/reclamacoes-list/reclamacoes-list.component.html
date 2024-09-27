@@ -1,6 +1,9 @@
 <div class="container">
-  <h1>ReclaNation</h1>
-  <h3>Faça parte da nação reclamadora!</h3>
+  <h1>ReclaNação</h1>
+  <h3>Faça parte dessa nação reclamadora!</h3>
+  <div>
+    <button (click)="addReclamacao()">Criar Reclamação</button>
+  </div>
   <ul class="user-list">
     <li *ngFor="let usuario of usuarios">
       <div class="user-info">

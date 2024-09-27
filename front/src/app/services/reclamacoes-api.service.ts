@@ -7,7 +7,7 @@ import { Reclamacao } from '../models/reclamacao';
   providedIn: 'root'
 })
 export class ReclamacoesService {
-  private apiUrl = 'http://127.0.0.1:5000/reclamacoes'; // Adjust if needed
+  private apiUrl = 'http://127.0.0.1:5000/reclamacoes';
 
   constructor(private http: HttpClient) { }
 
