@@ -1,5 +1,9 @@
 # **ReclamNação** 🤬
 
+Grupo:
+- Daniel Marques Nascimento
+- Gabriel Castro Cunha
+
 "Junte-se à nação reclamadora!"
 -
 Uma aplicação web destinada à criação e gestão de reclamações de forma simples e eficiente.
